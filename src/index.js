@@ -5,11 +5,11 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
-import Counter from "./components/counter";
+import Movies from "./components/movies";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Movies />
   </React.StrictMode>,
   document.getElementById("root")
 );
