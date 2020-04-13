@@ -6,6 +6,7 @@ class LoginForm extends Component {
       username: "",
       password: "",
     },
+    errors: {},
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -14,10 +15,22 @@ class LoginForm extends Component {
     this.setState({ account });
   };
 
+  validate = () => {
+    const errors = {};
+    const { account } = this.state;
+
+    if (account.username.trim() === "")
+      errors.username = "Username is required.";
+    if (account.password.trim() === "")
+      errors.password = "Password is required.";
+    return Object.keys(errors).length === 0 ? null : errors;
+  };
   handleSubmit = (e) => {
     e.preventDefault();
-    // Call the server
-    console.log("Submitted!!");
+    const errors = this.validate();
+    console.log("errors", errors);
+    this.setState({ errors });
+    if (errors) return; // we don'r make a service call is error exists
   };
 
   render() {
